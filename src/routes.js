@@ -21,6 +21,14 @@ function routesConfig($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.customerRegistration', {
+      url: '/customerRegistration',
+      views: {
+        mainContent: {
+          component: 'customerRegistrationCom'
+        }
+      }
+    })
     .state('app.sample', {
       url: '/sample',
       views: {
