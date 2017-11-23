@@ -28,5 +28,22 @@ function routesConfig($stateProvider, $urlRouterProvider) {
           component: 'sampleCom'
         }
       }
+    })
+    /* ------------------------------- Stock  ------------------------------- */
+    .state('app.payment', {
+      url: '/payment',
+      views: {
+        mainContent: {
+          template: '<div ui-view="mainContent"></div>'
+        }
+      }
+    })
+    .state('app.payment.list', {
+      url: '/list',
+      views: {
+        mainContent: {
+          component: 'paymentListCom'
+        }
+      }
     });
 }
