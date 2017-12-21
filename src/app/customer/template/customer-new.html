@@ -49,7 +49,7 @@
           <div class="col-md-12">
             <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.customerNewForm.birthday.$invalid && $ctrl.customerSubmitBtnClicked }">
               <!-- <input id="form_birthday" name="birthday" type="text" class="form-control" ng-model="$ctrl.customerNew.birthday" required> -->
-              <input id="form_birthday" name="birthday" placeholder="Birthday" type="text" moment-picker max-date="$ctrl.maxDateBirthday" max-view="day" start-view="year" start-date="$ctrl.startDateBirthday" class="form-control" ng-model="$ctrl.customerNew.birthday" format="DD/MM/YYYY" required>
+              <input id="form_birthday" name="birthday" placeholder="Birthday" type="text" moment-picker max-date="$ctrl.maxDateBirthday" max-view="day" start-view="year" start-date="$ctrl.startDateBirthday" class="form-control" ng-model="$ctrl.customerNew.birthday" format="YYYY-MM-DD" required>
               <span ng-show="$ctrl.customerNewForm.birthday.$invalid && $ctrl.customerSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
               <!-- <label for="form_birthday">Birthday</label> -->
             </div>

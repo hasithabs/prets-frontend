@@ -1,0 +1,57 @@
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+    <li>
+      <a href="index.html">Home</a>
+      <i class="fa fa-circle"></i>
+    </li>
+    <li>
+      <span>Report History</span>
+    </li>
+  </ul>
+</div>
+
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title hb-page-title"> Report History
+  <small></small>
+</h1>
+<!-- END PAGE TITLE-->
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- BEGIN EXAMPLE TABLE PORTLET-->
+      <!-- table table-striped table-bordered table-hover -->
+      <table datatable="ng" dt-options="$ctrl.dtOptions" dt-column-defs="$ctrl.dtColumnDefs" class="table datatable-basic dataTable table-bordered no-footer hover col-xs-12">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Report Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="report in $ctrl.reports track by $index">
+            <td>{{ report.id }}</td>
+            <td>{{ report.type }}</td>
+            <td>{{ report.startDate }}</td>
+            <td>{{ report.endDate }}</td>
+            <td>{{ report.count }}</td>
+            <td>
+              <div container=".content" placement="bottom-right" data-animation="am-fade" bs-dropdown aria-haspopup="true" aria-expanded="false" class="btn btn-xs blue dropdown-toggle" >Actions
+                <i class="fa fa-angle-down"></i>
+                <!-- <button container=".content" placement="top-right" data-animation="am-fade" bs-dropdown aria-haspopup="true" aria-expanded="false" class="btn btn-xs green dropdown-toggle"> Actions -->
+                  <!-- </button> -->
+                </div>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a ng-click="$ctrl.onGenerate()"><i class="fa fa-pencil" aria-hidden="true"></i> Generate</a></li>
+                </ul>
+              </td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+  </div>
+</div>

@@ -116,5 +116,55 @@ function routesConfig($stateProvider, $urlRouterProvider) {
           component: 'walletListCom'
         }
       }
+    })
+    /* ------------------------------- Settings  ------------------------------- */
+    .state('app.settings', {
+      url: '/settings',
+      views: {
+        mainContent: {
+          template: '<div ui-view="mainContent"></div>'
+        }
+      }
+    })
+    .state('app.settings.company', {
+      url: '/company',
+      views: {
+        mainContent: {
+          component: 'settingsCompanyCom'
+        }
+      }
+    })
+    .state('app.settings.email', {
+      url: '/email',
+      views: {
+        mainContent: {
+          component: 'settingsEmailCom'
+        }
+      }
+    })
+    /* ------------------------------- Report  ------------------------------- */
+    .state('app.report', {
+      url: '/report',
+      views: {
+        mainContent: {
+          template: '<div ui-view="mainContent"></div>'
+        }
+      }
+    })
+    .state('app.report.generator', {
+      url: '/generator',
+      views: {
+        mainContent: {
+          component: 'reportGeneratorCom'
+        }
+      }
+    })
+    .state('app.report.history', {
+      url: '/history',
+      views: {
+        mainContent: {
+          component: 'reportHistoryCom'
+        }
+      }
     });
 }

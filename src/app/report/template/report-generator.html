@@ -1,0 +1,95 @@
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+    <li>
+      <a href="index.html">Home</a>
+      <i class="fa fa-circle"></i>
+    </li>
+    <li>
+      <span>Report Generator</span>
+    </li>
+  </ul>
+</div>
+
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title hb-page-title"> Report Generator
+  <small></small>
+</h1>
+<!-- END PAGE TITLE-->
+
+<div class="content report-content">
+
+  <!-- BEGIN SAMPLE FORM PORTLET-->
+  <div class="portlet light bordered stock-manually">
+    <div class="portlet-title">
+      <div class="caption font-green">
+        <i class="icon-pin font-green"></i>
+        <span class="caption-subject bold uppercase">Report Info</span>
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form role="form" name="$ctrl.reportNewForm">
+        <div class="form-body">
+
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.reportNewForm.startDate.$invalid && $ctrl.customerSubmitBtnClicked }">
+                <!-- <input id="form_startDate" name="startDate" type="text" class="form-control" ng-model="$ctrl.customerNew.startDate" required> -->
+                <input id="form_startDate" name="startDate" placeholder="Start Date" type="text" moment-picker max-date="$ctrl.maxDateBirthday" max-view="day" start-view="year" start-date="$ctrl.customerNew.endDate" class="form-control" ng-model="$ctrl.customerNew.startDate" format="YYYY-MM-DD" required>
+                <span ng-show="$ctrl.reportNewForm.startDate.$invalid && $ctrl.customerSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+                <!-- <label for="form_startDate">Birthday</label> -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.reportNewForm.endDate.$invalid && $ctrl.customerSubmitBtnClicked }">
+                <!-- <input id="form_endDate" name="endDate" type="text" class="form-control" ng-model="$ctrl.customerNew.endDate" required> -->
+                <input id="form_endDate" name="endDate" placeholder="End Date" type="text" moment-picker min-date="$ctrl.customerNew.startDate" max-date="$ctrl.maxEndDate" max-view="day" start-view="year" start-date="$ctrl.endDateBirthday" class="form-control" ng-model="$ctrl.customerNew.endDate" format="YYYY-MM-DD" required>
+                <span ng-show="$ctrl.reportNewForm.endDate.$invalid && $ctrl.customerSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+                <!-- <label for="form_endDate">Birthday</label> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 record-count">
+            <div class="col-md-2 form-group form-md-line-input form-md-floating-label">
+              <label class=""># of Records</label>
+            </div>
+            <div class="col-md-3 form-group form-md-line-input form-md-floating-label">
+              <input id="record-count-switch" type="checkbox" class="make-switch" data-on-text="&nbsp;All&nbsp;" data-off-text="&nbsp;Limit&nbsp;" checked="true">
+            </div>
+            <div id="record-count-input" class="col-md-2">
+              <div class="form-group form-md-line-input form-md-floating-label">
+                <input id="form_recordCount" name="recordCount" type="number" value="100" min="0" max="2000" class="form-control" required>
+                <label for="form_recordCount">Count</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 generate-btns">
+            <h4>Click icon to generate report</h4>
+            <div class="portlet-body">
+              <a href="javascript:;" ng-click="$ctrl.onExportClick()" class="icon-btn blue">
+                <i class="icon-user"></i>
+                <div> Customers </div>
+              </a>
+              <a href="javascript:;" ng-click="$ctrl.onExportClick()" class="icon-btn">
+                <i class="icon-layers"></i>
+                <div> Loans </div>
+              </a>
+              <a href="javascript:;" ng-click="$ctrl.onExportClick()" class="icon-btn">
+                <i class="icon-wallet"></i>
+                <div> My Wallet </div>
+              </a>
+              <a href="javascript:;" ng-click="$ctrl.onExportClick()" class="icon-btn">
+                <i class="icon-credit-card"></i>
+                <div> Payments </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+    <!-- END SAMPLE FORM PORTLET-->
+
+</div>

@@ -36,3 +36,31 @@ table.dataTable td.sorting_1 {
     }
   }
 }
+
+
+.report-content {
+  .record-count {
+    >div label {
+      padding-top: 7px;
+      color: #888888;
+    }
+  }
+
+  .generate-btns {
+    margin-bottom: 50px;
+
+    div {
+      a {
+        background-color: #E1E5EC;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+

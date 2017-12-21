@@ -1,0 +1,84 @@
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+    <li>
+      <a href="index.html">Home</a>
+      <i class="fa fa-circle"></i>
+    </li>
+    <li>
+      <span>Company Settings</span>
+    </li>
+  </ul>
+</div>
+
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title hb-page-title"> Company Settings
+  <small></small>
+</h1>
+<!-- END PAGE TITLE-->
+
+<div class="content">
+
+  <!-- BEGIN SAMPLE FORM PORTLET-->
+  <div class="portlet light bordered stock-manually">
+    <div class="portlet-title">
+      <div class="caption font-green">
+        <i class="icon-pin font-green"></i>
+        <span class="caption-subject bold uppercase">Company Info</span>
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form role="form" name="$ctrl.settingsNewForm">
+        <div class="form-body">
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.settingsNewForm.companyEmail.$invalid && $ctrl.settingsSubmitBtnClicked }">
+              <input id="form_companyEmail" name="companyEmail" type="text" class="form-control" ng-model="$ctrl.settingsNew.companyEmail" required>
+              <span ng-show="$ctrl.settingsNewForm.companyEmail.$invalid && $ctrl.settingsSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_companyEmail">Company Email</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.settingsNewForm.SMTPHost.$invalid && $ctrl.settingsSubmitBtnClicked }">
+              <input id="form_SMTPHost" name="SMTPHost" type="text" class="form-control" ng-model="$ctrl.settingsNew.SMTPHost" required>
+              <span ng-show="$ctrl.settingsNewForm.SMTPHost.$invalid && $ctrl.settingsSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_SMTPHost">SMTP Host</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.settingsNewForm.SMTPPort.$invalid && $ctrl.settingsSubmitBtnClicked }">
+              <input id="form_SMTPPort" name="SMTPPort" type="number" class="form-control" ng-model="$ctrl.settingsNew.SMTPPort" required>
+              <span ng-show="$ctrl.settingsNewForm.SMTPPort.$invalid && $ctrl.settingsSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_SMTPPort">SMTP Port</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.settingsNewForm.SMTPUser.$invalid && $ctrl.settingsSubmitBtnClicked }">
+              <input id="form_SMTPUser" name="SMTPUser" type="text" class="form-control" ng-model="$ctrl.settingsNew.SMTPUser" required>
+              <span ng-show="$ctrl.settingsNewForm.SMTPUser.$invalid && $ctrl.settingsSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_SMTPUser">SMTP User</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.settingsNewForm.SMTPPassword.$invalid && $ctrl.settingsSubmitBtnClicked }">
+              <input id="form_SMTPPassword" name="SMTPPassword" type="password" class="form-control" ng-model="$ctrl.settingsNew.SMTPPassword" required>
+              <span ng-show="$ctrl.settingsNewForm.SMTPPassword.$invalid && $ctrl.settingsSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_SMTPPassword">SMTP User</label>
+            </div>
+          </div>
+
+
+          <div class="col-md-12 form-actions noborder">
+            <button type="button" class="btn default">Cancel</button>
+            <button type="button" ng-click="$ctrl.onNewSettingsSubmit()" ng-disabled="$ctrl.isNewSettingsProcessing" ng-class="{'processing': $ctrl.isNewSettingsProcessing}" class="btn blue">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+    <!-- END SAMPLE FORM PORTLET-->
+
+</div>

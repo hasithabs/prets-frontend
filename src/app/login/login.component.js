@@ -3,6 +3,8 @@ angular
   .component('loginCom', {
     templateUrl: 'app/login/template/login.html',
     controller: function () {
+      var self = this;
+      self.isDisabled = false;
 
 var Login = function() {
 
@@ -52,6 +54,16 @@ var Login = function() {
         jQuery('#register-back-btn').click(function() {
             jQuery('.login-form').show();
             jQuery('.register-form').hide();
+        });
+
+        jQuery('#register-submit-btn').click(function() {
+            jQuery('.login-form').show();
+            jQuery('.register-form').hide();
+        });
+
+        jQuery('#forget-submit-btn').click(function() {
+            jQuery('.login-form').show();
+            jQuery('.forget-form').hide();
         });
     }
 
