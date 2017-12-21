@@ -82,7 +82,6 @@ angular
         DTColumnDefBuilder.newColumnDef(4).notSortable()
       ];
 
-
       self.onGenerate = function () {
         self.isProcessing = true;
 
