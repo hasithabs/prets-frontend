@@ -1,57 +1,58 @@
 angular
   .module('app')
-  .component('paymentListCom', {
-    templateUrl: 'app/payment/template/payment-list.html',
+  .component('loanListCom', {
+    templateUrl: 'app/loan/template/loan-list.html',
     controller: function ($rootScope, $log, $state, $q, $interval, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, DTDefaultOptions, SweetAlert) {
       var self = this;
-      self.payments = [];
+      self.loans = [];
 
       angular.element('.dropdown-menu > .hold-on-click').on('click', function(e) {
             // angular.element('.dropdown-menu').addClass('');;
         });
 
-      self.payments = [
+      self.loans = [
       {
-        id: 12,
-        custName: "Seth Duerr",
-        loan: "Flexible (RD1000.00)",
-        balance: 200,
-        amountPay: 800,
-        transactionDate: "11/15/2017",
-        teller: "Admin"
+        id: 214,
+        loanType: "Personal",
+        custName: "Withana",
+        amount: 125000,
+        balance: 100000,
+        duration: 12,
+        date: "2017-10-11"
       }, {
-        id: 13,
-        custName: "Fernando Michelin",
-        loan: "Flexible (RD5000.00)",
-        balance: 0,
-        amountPay: 5000,
-        transactionDate: "11/22/2017",
-        teller: "Admin"
+        id: 235,
+        loanType: "Personal ",
+        custName: "Nagodavithana",
+        amount: 200000,
+        balance: 200000,
+        duration: 24,
+        date: "2017-11-24"
       }, {
-        id: 15,
-        custName: "Natalia Rorick",
-        loan: "Flexible (RD3000.00)",
-        balance: 10000,
-        amountPay: 2000,
-        transactionDate: "11/09/2017",
-        teller: "Admin"
+        id: 239,
+        loanType: "Business ",
+        custName: "Dilshanka",
+        amount: 600000,
+        balance: 450000,
+        duration: 60,
+        date: "2015-05-10"
       }, {
-        id: 16,
-        custName: "Winnie Prejean",
-        loan: "Flexible (RD400.00)",
-        balance: -50,
-        amountPay: 450,
-        transactionDate: "11/11/2017",
-        teller: "Admin"
+        id: 245,
+        loanType: "Vehicle",
+        custName: "Thilakasiri",
+        amount: 300000,
+        balance: 200000,
+        duration: 24,
+        date: "2016-01-14"
       }, {
-        id: 19,
-        custName: "Jonney Wick",
-        loan: "Flexible (RD1200.00)",
-        balance: 200,
-        amountPay: 1000,
-        transactionDate: "11/12/2017",
-        teller: "Admin"
+        id: 249,
+        loanType: "Personal",
+        custName: "Buddika",
+        amount: 150000,
+        balance: 140000,
+        duration: 6,
+        date: "2017-02-22"
       }];
+
 
       self.language = {
         // "sEmptyTable": "Ingen tilgængelige data (prøv en anden søgning)",
@@ -87,7 +88,7 @@ angular
       self.dtColumnDefs = [
         DTColumnDefBuilder.newColumnDef(0),
         // DTColumnDefBuilder.newColumnDef(1).notVisible(),
-        DTColumnDefBuilder.newColumnDef(self.payments.length - 1).notSortable()
+        DTColumnDefBuilder.newColumnDef(7).notSortable()
       ];
 
       function toDelete(id) {
@@ -95,7 +96,7 @@ angular
         SweetAlert.swal(
         {
           title: "Are you sure?",
-          text: "Your will not be able to recover this payment data!",
+          text: "Your will not be able to recover this customer data!",
           type: "warning",
           showCancelButton: true,
           confirmButtonColor: "#DD6B55",
@@ -106,10 +107,10 @@ angular
         },
         function (isConfirm) {
           if (isConfirm) {
-            self.payments.splice(id, 1);
-            SweetAlert.swal("Deleted!", "Your payment data has been deleted.", "success");
+            self.loans.splice(id, 1);
+            SweetAlert.swal("Deleted!", "Your customer data has been deleted.", "success");
           } else {
-            SweetAlert.swal("Cancelled", "Your payment data is safe :)", "error");
+            SweetAlert.swal("Cancelled", "Your customer data is safe :)", "error");
           }
         });
       }

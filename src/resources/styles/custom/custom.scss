@@ -1,0 +1,38 @@
+
+.stock-manually {
+  display: inline-block;
+}
+
+.item-new-add {
+  margin: 15px 0;
+}
+
+.notification-done {
+  color: #3598dc !important;
+
+  i {
+    color: #3598dc !important;
+  }
+}
+
+table.dataTable td.sorting_1 {
+  color: #000;
+  background: #fbfcfd !important;
+}
+.stock-reorder {
+  color: #fff !important;
+  background-color: #F3C200 !important;
+}
+.stock-danger {
+  color: #fff !important;
+  background-color: #E7505A !important;
+}
+
+
+.wallet-new-modal {
+  .modal-content {
+    .modal-body > div {
+      margin-bottom: 20px;
+    }
+  }
+}

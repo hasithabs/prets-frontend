@@ -1,5 +1,60 @@
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+    <li>
+      <a href="index.html">Home</a>
+      <i class="fa fa-circle"></i>
+    </li>
+    <li>
+      <span>Dashboard</span>
+    </li>
+  </ul>
+</div>
+
 <!-- BEGIN PAGE TITLE-->
-<h1 class="page-title hb-page-title"> Loan Dashboard
-  <small>statistics, charts, recent events and reports</small>
+<h1 class="page-title hb-page-title"> Prets Dashboard
+  <small>statistics, recent events</small>
 </h1>
 <!-- END PAGE TITLE-->
+
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 blue" ui-sref="app.wallet">
+            <div class="visual">
+                <i class="fa fa-bank"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="1349">1349</span>
+                </div>
+                <div class="desc"> My Wallet </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 red" ui-sref="app.loan.list">
+            <div class="visual">
+                <i class="fa fa-bitcoin"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    Rs. <span data-counter="counterup" data-value="12,5">812,543</span></div>
+                <div class="desc"> Total Loans </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 green" ui-sref="app.customer.list">
+            <div class="visual">
+                <i class="fa fa-users"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="549">549</span>
+                </div>
+                <div class="desc"> Customers </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+

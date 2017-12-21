@@ -5,17 +5,22 @@
       <i class="fa fa-circle"></i>
     </li>
     <li>
-      <span>View Payments</span>
+      <span>My Wallet</span>
     </li>
   </ul>
 </div>
 
 <!-- BEGIN PAGE TITLE-->
-<h1 class="page-title hb-page-title"> View Payments
+<h1 class="page-title hb-page-title"> My Wallet
   <small></small>
 </h1>
 <!-- END PAGE TITLE-->
 <div class="content">
+
+  <div>
+    <button type="button" class="btn blue plus" data-animation="am-fade-and-slide-top" data-template-url="app/wallet/template/wallet-new.html" bs-modal="modal"><i class="fa fa-plus"></i> Add New</button>
+  </div>
+
   <div class="row">
     <div class="col-md-12">
       <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -24,24 +29,20 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Customer</th>
-            <th>Loan</th>
-            <th>Balance</th>
-            <th>Amount to Pay</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>WalletType</th>
             <th>Transaction Date</th>
-            <th>Teller</th>
             <th class="text-center">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="payment in $ctrl.payments track by $index">
-            <td>{{ payment.id }}</td>
-            <td>{{ payment.custName }}</td>
-            <td>{{ payment.loan }}</td>
-            <td>{{ payment.balance }}</td>
-            <td>{{ payment.amountPay }}</td>
-            <td>{{ payment.transactionDate }}</td>
-            <td>{{ payment.teller }}</td>
+          <tr ng-repeat="mywallet in $ctrl.mywallets track by $index">
+            <td>{{ mywallet.id }}</td>
+            <td>{{ mywallet.amount }}</td>
+            <td>{{ mywallet.description }}</td>
+            <td>{{ mywallet.walletType }}</td>
+            <td>{{ mywallet.transactionDate }}</td>
             <td>
               <div container=".content" placement="bottom-right" data-animation="am-fade" bs-dropdown aria-haspopup="true" aria-expanded="false" class="btn btn-xs blue dropdown-toggle" >Actions
                 <i class="fa fa-angle-down"></i>

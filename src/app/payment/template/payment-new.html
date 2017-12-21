@@ -1,0 +1,80 @@
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+    <li>
+      <a href="index.html">Home</a>
+      <i class="fa fa-circle"></i>
+    </li>
+    <li>
+      <span>Add New Payment</span>
+    </li>
+  </ul>
+</div>
+
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title hb-page-title"> Add New Payment
+  <small></small>
+</h1>
+<!-- END PAGE TITLE-->
+
+<div class="content">
+
+  <!-- BEGIN SAMPLE FORM PORTLET-->
+  <div class="portlet light bordered stock-manually">
+    <div class="portlet-title">
+      <div class="caption font-green">
+        <i class="icon-pin font-green"></i>
+        <span class="caption-subject bold uppercase">Payment Info</span>
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form role="form" name="$ctrl.paymentNewForm">
+        <div class="form-body">
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.paymentNewForm.custName.$invalid && $ctrl.paymentSubmitBtnClicked }">
+              <!-- <input name="custName" type="text" class="form-control" ng-model="$ctrl.paymentNew.custName" required> -->
+              <angucomplete-alt id="ex1" input-name="custName" placeholder="Search customer name..." pause="100" selected-object="selectedCountry" local-data="$ctrl.custNames" search-fields="name" title-field="name" minlength="1" input-class="form-control" field-required="true"/>
+              <span ng-show="$ctrl.paymentNewForm.custName.$invalid && $ctrl.paymentSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="ex1">Customer Name</label>
+            </div>
+          </div>
+
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.paymentNew.selectedLoan == '9999' && $ctrl.paymentSubmitBtnClicked }">
+              <select name="loan" ng-model="$ctrl.paymentNew.selectedLoan" class="form-control" ng-focus="true" required>
+                <option value="9999" disabled>Please Select Loan</option>
+                <option ng-repeat="loan in $ctrl.loans">{{loan.name}}</option>
+              </select>
+              <span ng-show="$ctrl.paymentNew.selectedLoan == '9999' && $ctrl.paymentSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Loan</label>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.paymentNewForm.amountToPay.$invalid && $ctrl.paymentSubmitBtnClicked }">
+              <input name="amountToPay" type="number" class="form-control" ng-model="$ctrl.paymentNew.amountToPay" required>
+              <span ng-show="$ctrl.paymentNewForm.amountToPay.$invalid && $ctrl.paymentSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Amount to pay</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.paymentNew.selectedTeller == '9999' && $ctrl.paymentSubmitBtnClicked }">
+              <select name="teller" ng-model="$ctrl.paymentNew.selectedTeller" class="form-control" ng-focus="true" required>
+                <option value="9999" disabled>Please Select Teller</option>
+                <option ng-repeat="teller in $ctrl.tellers">{{teller.name}}</option>
+              </select>
+              <span ng-show="$ctrl.paymentNew.selectedTeller == '9999' && $ctrl.paymentSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Teller</label>
+            </div>
+          </div>
+
+          <div class="col-md-12 form-actions noborder">
+            <button type="button" class="btn default">Cancel</button>
+            <button type="button" ng-click="$ctrl.onNewDrugSubmit()" ng-disabled="$ctrl.isNewPaymentProcessing" ng-class="{'processing': $ctrl.isNewPaymentProcessing}" class="btn blue">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+
+  </div>

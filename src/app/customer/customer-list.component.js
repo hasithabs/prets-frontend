@@ -1,57 +1,58 @@
 angular
   .module('app')
-  .component('paymentListCom', {
-    templateUrl: 'app/payment/template/payment-list.html',
+  .component('customerListCom', {
+    templateUrl: 'app/customer/template/customer-list.html',
     controller: function ($rootScope, $log, $state, $q, $interval, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, DTDefaultOptions, SweetAlert) {
       var self = this;
-      self.payments = [];
+      self.customers = [];
 
       angular.element('.dropdown-menu > .hold-on-click').on('click', function(e) {
             // angular.element('.dropdown-menu').addClass('');;
         });
 
-      self.payments = [
+      self.customers = [
       {
-        id: 12,
-        custName: "Seth Duerr",
-        loan: "Flexible (RD1000.00)",
-        balance: 200,
-        amountPay: 800,
-        transactionDate: "11/15/2017",
-        teller: "Admin"
+        id: 124,
+        firstName: "Bathiya",
+        lastName: "Withana",
+        birthday: "1989-10-11",
+        mobile: 0714612489,
+        city: "Kandy",
+        email: "bathiya.3Withana@gmail.com"
       }, {
-        id: 13,
-        custName: "Fernando Michelin",
-        loan: "Flexible (RD5000.00)",
-        balance: 0,
-        amountPay: 5000,
-        transactionDate: "11/22/2017",
-        teller: "Admin"
+        id: 125,
+        firstName: "Shanaka ",
+        lastName: "Nagodavithana",
+        birthday: "1990-01-12",
+        mobile: 0778462719,
+        city: "Homagama",
+        email: "Shanaka314@yahoo.com"
       }, {
-        id: 15,
-        custName: "Natalia Rorick",
-        loan: "Flexible (RD3000.00)",
-        balance: 10000,
-        amountPay: 2000,
-        transactionDate: "11/09/2017",
-        teller: "Admin"
+        id: 130,
+        firstName: "Lalith ",
+        lastName: "Dilshanka",
+        birthday: "1980-12-01",
+        mobile: 0776148353,
+        city: "Nugegoda",
+        email: "Dilshanka643@gmail.com"
       }, {
-        id: 16,
-        custName: "Winnie Prejean",
-        loan: "Flexible (RD400.00)",
-        balance: -50,
-        amountPay: 450,
-        transactionDate: "11/11/2017",
-        teller: "Admin"
+        id: 132,
+        firstName: "Umesh",
+        lastName: "Thilakasiri",
+        birthday: "1994-10-25",
+        mobile: 0705564442,
+        city: "Maharagama",
+        email: "UmeshTT@gmail.com"
       }, {
         id: 19,
-        custName: "Jonney Wick",
-        loan: "Flexible (RD1200.00)",
-        balance: 200,
-        amountPay: 1000,
-        transactionDate: "11/12/2017",
-        teller: "Admin"
+        firstName: "Sachin",
+        lastName: "Buddika",
+        birthday: "1992-05-29",
+        mobile: 0766693582,
+        city: "Malabe",
+        email: "SachBuddika@gmail.co"
       }];
+
 
       self.language = {
         // "sEmptyTable": "Ingen tilgængelige data (prøv en anden søgning)",
@@ -87,7 +88,7 @@ angular
       self.dtColumnDefs = [
         DTColumnDefBuilder.newColumnDef(0),
         // DTColumnDefBuilder.newColumnDef(1).notVisible(),
-        DTColumnDefBuilder.newColumnDef(self.payments.length - 1).notSortable()
+        DTColumnDefBuilder.newColumnDef(7).notSortable()
       ];
 
       function toDelete(id) {
@@ -95,7 +96,7 @@ angular
         SweetAlert.swal(
         {
           title: "Are you sure?",
-          text: "Your will not be able to recover this payment data!",
+          text: "Your will not be able to recover this customer data!",
           type: "warning",
           showCancelButton: true,
           confirmButtonColor: "#DD6B55",
@@ -106,10 +107,10 @@ angular
         },
         function (isConfirm) {
           if (isConfirm) {
-            self.payments.splice(id, 1);
-            SweetAlert.swal("Deleted!", "Your payment data has been deleted.", "success");
+            self.customers.splice(id, 1);
+            SweetAlert.swal("Deleted!", "Your customer data has been deleted.", "success");
           } else {
-            SweetAlert.swal("Cancelled", "Your payment data is safe :)", "error");
+            SweetAlert.swal("Cancelled", "Your customer data is safe :)", "error");
           }
         });
       }

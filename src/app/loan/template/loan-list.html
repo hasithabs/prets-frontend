@@ -5,13 +5,13 @@
       <i class="fa fa-circle"></i>
     </li>
     <li>
-      <span>View Payments</span>
+      <span>View Loans</span>
     </li>
   </ul>
 </div>
 
 <!-- BEGIN PAGE TITLE-->
-<h1 class="page-title hb-page-title"> View Payments
+<h1 class="page-title hb-page-title"> View Loans
   <small></small>
 </h1>
 <!-- END PAGE TITLE-->
@@ -24,24 +24,24 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Customer</th>
-            <th>Loan</th>
-            <th>Balance</th>
-            <th>Amount to Pay</th>
-            <th>Transaction Date</th>
-            <th>Teller</th>
+            <th>Loan Type</th>
+            <th>Customer Name</th>
+            <th>Amount(Rs.)</th>
+            <th>Balance(Rs.)</th>
+            <th>Duration(Months)</th>
+            <th>Date Release</th>
             <th class="text-center">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="payment in $ctrl.payments track by $index">
-            <td>{{ payment.id }}</td>
-            <td>{{ payment.custName }}</td>
-            <td>{{ payment.loan }}</td>
-            <td>{{ payment.balance }}</td>
-            <td>{{ payment.amountPay }}</td>
-            <td>{{ payment.transactionDate }}</td>
-            <td>{{ payment.teller }}</td>
+          <tr ng-repeat="loan in $ctrl.loans track by $index">
+            <td>{{ loan.id }}</td>
+            <td>{{ loan.loanType }}</td>
+            <td>{{ loan.custName }}</td>
+            <td>{{ loan.amount }}</td>
+            <td>{{ loan.balance }}</td>
+            <td>{{ loan.duration }}</td>
+            <td>{{ loan.date }}</td>
             <td>
               <div container=".content" placement="bottom-right" data-animation="am-fade" bs-dropdown aria-haspopup="true" aria-expanded="false" class="btn btn-xs blue dropdown-toggle" >Actions
                 <i class="fa fa-angle-down"></i>

@@ -1,0 +1,32 @@
+<div class="modal modal-bs wallet-new-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <button type="button" class="close" ng-click="$hide()">×</button>
+          <h4 class="modal-title">Add Amount</h4></div>
+          <div class="modal-body">
+            <div class="col-md-12">
+              <span>Amount</span>
+              <input name="newAmount" type="number" class="form-control" ng-model="$ctrl.newWallet.newAmount" min="0">
+            </div>
+            <div class="col-md-12">
+              <span>Description</span>
+              <input name="description" type="text" class="form-control" ng-model="$ctrl.newWallet.description">
+            </div>
+            <div class="col-md-12">
+              <span>Wallet Type</span>
+              <select name="walletType" ng-model="$ctrl.newWallet.selectedWalletType" class="form-control" ng-focus="true" required>
+                <option value="Debit" selected>Debit</option>
+                <option value="Credit">Credit</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn grey" ng-click="$hide()">Close</button>
+            <button ng-disabled="$ctrl.newWallet.newAmount == '' || $ctrl.newWallet.newAmount == null" type="button" class="btn blue" ng-click="$ctrl.onAddNewAmount(); $hide();">Add New</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>

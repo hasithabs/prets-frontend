@@ -1,57 +1,27 @@
 angular
   .module('app')
-  .component('paymentListCom', {
-    templateUrl: 'app/payment/template/payment-list.html',
+  .component('walletListCom', {
+    templateUrl: 'app/wallet/template/wallet-list.html',
     controller: function ($rootScope, $log, $state, $q, $interval, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, DTDefaultOptions, SweetAlert) {
       var self = this;
-      self.payments = [];
+      self.mywallets = [];
+
+      self.newWallet = {};
+      self.newWallet.selectedWalletType = "Debit";
 
       angular.element('.dropdown-menu > .hold-on-click').on('click', function(e) {
             // angular.element('.dropdown-menu').addClass('');;
         });
 
-      self.payments = [
+      self.mywallets = [
       {
-        id: 12,
-        custName: "Seth Duerr",
-        loan: "Flexible (RD1000.00)",
-        balance: 200,
-        amountPay: 800,
-        transactionDate: "11/15/2017",
-        teller: "Admin"
-      }, {
-        id: 13,
-        custName: "Fernando Michelin",
-        loan: "Flexible (RD5000.00)",
-        balance: 0,
-        amountPay: 5000,
-        transactionDate: "11/22/2017",
-        teller: "Admin"
-      }, {
-        id: 15,
-        custName: "Natalia Rorick",
-        loan: "Flexible (RD3000.00)",
-        balance: 10000,
-        amountPay: 2000,
-        transactionDate: "11/09/2017",
-        teller: "Admin"
-      }, {
-        id: 16,
-        custName: "Winnie Prejean",
-        loan: "Flexible (RD400.00)",
-        balance: -50,
-        amountPay: 450,
-        transactionDate: "11/11/2017",
-        teller: "Admin"
-      }, {
-        id: 19,
-        custName: "Jonney Wick",
-        loan: "Flexible (RD1200.00)",
-        balance: 200,
-        amountPay: 1000,
-        transactionDate: "11/12/2017",
-        teller: "Admin"
+        id: 23,
+        amount: 500,
+        description: "Description Sample",
+        walletType: "Debit",
+        transactionDate: "2017-10-28"
       }];
+
 
       self.language = {
         // "sEmptyTable": "Ingen tilgængelige data (prøv en anden søgning)",
@@ -87,15 +57,28 @@ angular
       self.dtColumnDefs = [
         DTColumnDefBuilder.newColumnDef(0),
         // DTColumnDefBuilder.newColumnDef(1).notVisible(),
-        DTColumnDefBuilder.newColumnDef(self.payments.length - 1).notSortable()
+        DTColumnDefBuilder.newColumnDef(5).notSortable()
       ];
+
+      self.onAddNewAmount = function () {
+        var newItem =
+        {
+          id: (Math.ceil(Math.random() * (200 + 12)) - 12),
+          amount: self.newWallet.newAmount,
+          description: self.newWallet.description,
+          walletType: self.newWallet.selectedWalletType,
+          transactionDate: moment(new Date()).format("YYYY-MM-DD")
+        };
+        console.log(newItem);
+        self.mywallets.push(newItem);
+      };
 
       function toDelete(id) {
         console.log("sds");
         SweetAlert.swal(
         {
           title: "Are you sure?",
-          text: "Your will not be able to recover this payment data!",
+          text: "Your will not be able to recover this customer data!",
           type: "warning",
           showCancelButton: true,
           confirmButtonColor: "#DD6B55",
@@ -106,10 +89,10 @@ angular
         },
         function (isConfirm) {
           if (isConfirm) {
-            self.payments.splice(id, 1);
-            SweetAlert.swal("Deleted!", "Your payment data has been deleted.", "success");
+            self.mywallets.splice(id, 1);
+            SweetAlert.swal("Deleted!", "Your customer data has been deleted.", "success");
           } else {
-            SweetAlert.swal("Cancelled", "Your payment data is safe :)", "error");
+            SweetAlert.swal("Cancelled", "Your customer data is safe :)", "error");
           }
         });
       }

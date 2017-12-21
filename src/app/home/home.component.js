@@ -2,7 +2,53 @@ angular
   .module('app')
   .component('homeCom', {
     templateUrl: 'app/home/template/home.html',
-    controller: function () {
+    controller: function ($scope, $log, $state, $transitions) {
+        var self = this;
+        // console.log($state.current);
+        // console.log(angular.element('.page-sidebar-menu').find('.nav-item'));
+
+        self.menuNav = angular.element('.page-sidebar-menu').children('.nav-item');
+        $transitions.onSuccess({}, function () {
+            $('.page-sidebar-menu > li').removeClass('active');
+            $('.page-sidebar-menu > li').removeClass('open');
+            $('.page-sidebar-menu > li > ul').css({display: 'none'});
+            $('.page-sidebar-menu > li > ul li').removeClass('active');
+            console.log("gg");
+            // console.log(self.menuNav);
+            // console.log($state.current.name);
+            console.log('--------');
+            for (var i = 0; i < self.menuNav.length; i++) {
+                // console.log(self.menuNav[i].id);
+                if ($state.current.name.includes(self.menuNav[i].id)) {
+                    $('.page-sidebar-menu > li:nth-child(' + (i + 2) + ')').addClass('active');
+                    $('.page-sidebar-menu > li:nth-child(' + (i + 2) + ') > a').append('<span id="menuSelectArrow" class="selected"></span>');
+                    $('.page-sidebar-menu > li:nth-child(' + (i + 2) + ') > ul').css({display: 'block'});
+
+                    self.menuNavSubNav = angular.element('.page-sidebar-menu > li:nth-child(' + (i + 2) + ') > ul').children('.nav-item');
+                    for (var j = 0; j < self.menuNavSubNav.length; j++) {
+                        // console.log(self.menuNavSubNav[j].attributes[1].value);
+                        if ($state.current.name.includes(self.menuNavSubNav[j].attributes[1].value)) {;
+                            $('.page-sidebar-menu > li:nth-child(' + (i + 2) + ') > ul li:nth-child(' + (j + 1) + ')').addClass('active');
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        });
+
+        // $scope.$on('$routeChangeStart', function(scope, next, current){
+        //     console.log("gg222");
+        //     for (var i = 0; i < self.menuNav.length; i++) {
+        //         if ($state.current.name.includes(self.menuNav[i].attributes[1].value)) {
+        //             console.log(i);
+        //             console.log($('.page-sidebar-menu .nav-item:nth-child(1)'));
+        //             $('.page-sidebar-menu li:nth-child(' + (i + 2) + ')').addClass('active');
+        //             break;
+        //         }
+        //     }
+        // });
+
 
       // $interval(function () {
       //     NotificationCenter.getNewNotificationsRealtime();
@@ -2234,6 +2280,7 @@ var Layout = function () {
 //     angular.element('.navigation-accordion > li > .navigation-header > i').css({ display: 'none' });
 //   }
 // });
+
 
 
 /*eslint-enable */

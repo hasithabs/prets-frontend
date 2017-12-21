@@ -1,0 +1,86 @@
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+    <li>
+      <a href="index.html">Home</a>
+      <i class="fa fa-circle"></i>
+    </li>
+    <li>
+      <span>Add New Loan</span>
+    </li>
+  </ul>
+</div>
+
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title hb-page-title"> Add New Loan
+  <small></small>
+</h1>
+<!-- END PAGE TITLE-->
+
+<div class="content">
+
+  <!-- BEGIN SAMPLE FORM PORTLET-->
+  <div class="portlet light bordered stock-manually">
+    <div class="portlet-title">
+      <div class="caption font-green">
+        <i class="icon-pin font-green"></i>
+        <span class="caption-subject bold uppercase">Loan Info</span>
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form role="form" name="$ctrl.loanNewForm">
+        <div class="form-body">
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.loanNew.selectedLoanType == '9999' && $ctrl.loanSubmitBtnClicked }">
+              <select id="form_loanType" name="loanType" ng-model="$ctrl.loanNew.selectedLoanType" class="form-control" ng-focus="true" required>
+                <option value="9999" disabled>Please Select Loan Type</option>
+                <option ng-repeat="loanType in $ctrl.loanTypes">{{loanType.name}}</option>
+              </select>
+              <span ng-show="$ctrl.loanNew.selectedLoanType == '9999' && $ctrl.loanSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_loanType">Loan</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.loanNewForm.custName.$invalid && $ctrl.loanSubmitBtnClicked }">
+              <!-- <input name="custName" type="text" class="form-control" ng-model="$ctrl.loanNew.custName" required> -->
+              <angucomplete-alt id="ex1" input-name="custName" placeholder="Search customer name..." pause="100" local-data="$ctrl.custNames" search-fields="name" title-field="name" minlength="1" input-class="form-control" field-required="true"/>
+              <span ng-show="$ctrl.loanNewForm.custName.$invalid && $ctrl.loanSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="ex1">Customer Name</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.loanNewForm.amount.$invalid && $ctrl.loanSubmitBtnClicked }">
+              <input id="form_amount" name="amount" type="number" class="form-control" ng-model="$ctrl.loanNew.amount" min="1000" required>
+              <span ng-show="$ctrl.loanNewForm.amount.$invalid && $ctrl.loanSubmitBtnClicked" class="help-block help-block-error">This field is invalid. (Minimum Rs. 1000)</span>
+              <label for="form_amount">Amount (Rs.)</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.loanNewForm.duration.$invalid && $ctrl.loanSubmitBtnClicked }">
+              <input id="form_duration" name="duration" type="number" class="form-control" ng-model="$ctrl.loanNew.duration" min="1" required>
+              <span ng-show="$ctrl.loanNewForm.duration.$invalid && $ctrl.loanSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_duration">Duration (Months)</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.loanNewForm.remarks.$invalid && $ctrl.loanSubmitBtnClicked }">
+              <input id="form_remarks" name="remarks" type="text" class="form-control" ng-model="$ctrl.loanNew.remarks">
+              <span ng-show="$ctrl.loanNewForm.remarks.$invalid && $ctrl.loanSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_remarks">Remarks</label>
+            </div>
+          </div>
+
+          <div class="col-md-12 form-actions noborder">
+            <button type="button" class="btn default">Cancel</button>
+            <button type="button" ng-click="$ctrl.onNewLoanSubmit()" ng-disabled="$ctrl.isNewLoanProcessing" ng-class="{'processing': $ctrl.isNewLoanProcessing}" class="btn blue">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+
+  </div>
