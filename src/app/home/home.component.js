@@ -2,18 +2,29 @@ angular
   .module('app')
   .component('homeCom', {
     templateUrl: 'app/home/template/home.html',
-    controller: function ($scope, $log, $state, $transitions) {
+    controller: function ($rootScope, $scope, $log, $timeout, $state, $transitions) {
         var self = this;
+
         // console.log($state.current);
         // console.log(angular.element('.page-sidebar-menu').find('.nav-item'));
-
-        self.menuNav = angular.element('.page-sidebar-menu').children('.nav-item');
+        locateMenu();
         $transitions.onSuccess({}, function () {
-            $('.page-sidebar-menu > li').removeClass('active');
-            $('.page-sidebar-menu > li').removeClass('open');
-            $('.page-sidebar-menu > li > ul').css({display: 'none'});
-            $('.page-sidebar-menu > li > ul li').removeClass('active');
-            console.log("gg");
+            locateMenu();
+        });
+
+
+        function locateMenu() {
+            self.menuNav = angular.element('.page-sidebar-menu').children('.nav-item');
+                console.log('HOME - $rootScope.usernameLog');
+                console.log($rootScope.usernameLog);
+                console.log($state.current);
+                $('.page-sidebar-menu > li').removeClass('active');
+                $('.page-sidebar-menu > li').removeClass('open');
+                $('.page-sidebar-menu > li > a span').removeClass('open');
+                $('.page-sidebar-menu > li > ul').css({display: 'none'});
+                $('.page-sidebar-menu > li > ul li').removeClass('active');
+                $('#menuSelectArrow').remove();
+                console.log("gg");
             // console.log(self.menuNav);
             // console.log($state.current.name);
             console.log('--------');
@@ -21,6 +32,7 @@ angular
                 // console.log(self.menuNav[i].id);
                 if ($state.current.name.includes(self.menuNav[i].id)) {
                     $('.page-sidebar-menu > li:nth-child(' + (i + 2) + ')').addClass('active');
+                    $('.page-sidebar-menu > li:nth-child(' + (i + 2) + ') > a span.arrow').addClass('open');
                     $('.page-sidebar-menu > li:nth-child(' + (i + 2) + ') > a').append('<span id="menuSelectArrow" class="selected"></span>');
                     $('.page-sidebar-menu > li:nth-child(' + (i + 2) + ') > ul').css({display: 'block'});
 
@@ -35,7 +47,7 @@ angular
                     break;
                 }
             }
-        });
+        }
 
         // $scope.$on('$routeChangeStart', function(scope, next, current){
         //     console.log("gg222");
@@ -2003,9 +2015,6 @@ var Layout = function () {
             if (body.hasClass("page-sidebar-closed")) {
                 body.removeClass("page-sidebar-closed");
                 sidebarMenu.removeClass("page-sidebar-menu-closed");
-                if (Cookies) {
-                    Cookies.set('sidebar_closed', '0');
-                }
             } else {
                 body.addClass("page-sidebar-closed");
                 sidebarMenu.addClass("page-sidebar-menu-closed");

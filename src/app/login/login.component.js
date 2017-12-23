@@ -2,9 +2,23 @@ angular
   .module('app')
   .component('loginCom', {
     templateUrl: 'app/login/template/login.html',
-    controller: function () {
+    controller: function ($rootScope, $state) {
       var self = this;
       self.isDisabled = false;
+
+      self.onLoginClicked = function () {
+        $rootScope.usernameLog = self.logUsername;
+        console.log("$rootScope.usernameLog");
+        console.log($rootScope.usernameLog);
+
+        if (self.logPassword == "customer") {
+          $rootScope.isCustomer = true;
+          $state.go('app.loan.new');
+        } else {
+          $rootScope.isCustomer = false;
+          $state.go('app.dashboard');
+        }
+      };
 
 var Login = function() {
 
