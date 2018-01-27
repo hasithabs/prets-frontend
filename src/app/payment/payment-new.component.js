@@ -2,7 +2,7 @@ angular
   .module('app')
   .component('paymentNewCom', {
     templateUrl: 'app/payment/template/payment-new.html',
-    controller: function ($rootScope, $log, $state, $q, $interval, $timeout, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, DTDefaultOptions) {
+    controller: function ($rootScope, $log, $state, $q, $interval, $timeout, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, DTDefaultOptions, SweetAlert) {
       var self = this;
 
       self.paymentSubmitBtnClicked = false;
@@ -59,9 +59,24 @@ angular
         self.paymentSubmitBtnClicked = true;
         self.isNewPaymentProcessing = true;
 
-        $timeout(function () {
-          self.isNewPaymentProcessing = false;
-        }, 5000);
+        if (self.paymentNewForm.$valid) {
+          $timeout(function () {
+            self.isNewCustomerProcessing = false;
+
+            SweetAlert.swal({
+              title: "Nice!",
+              text: "Payment created successfully.",
+              type: "success",
+              timer: 2000,
+              showConfirmButton: false
+            }, function () {
+              SweetAlert.close();
+              $state.go("app.payment.list");
+            });
+          }, 5000);
+        } else {
+            self.isNewCustomerProcessing = false;
+        }
 
       };
 
